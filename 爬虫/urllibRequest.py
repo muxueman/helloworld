@@ -2,6 +2,7 @@
 """
 Created on Fri Mar 22 09:52:32 2019
 
+response响应
 urlopen
 抓包工具的使用
 
