@@ -1,0 +1,93 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 100%;
+}
+
+h1 {
+    font-family: 'Gotu', sans-serif;
+    font-size: 1.75em;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.row {
+    width: 100%;
+}
+
+section.container {
+    background-color: gray;
+    border: 1px solid black;
+    /* height = 220px*/
+    margin: 10px;
+    padding: 10px;
+    position: relative;
+}
+
+.item {
+    background-color: yellowgreen;
+    position: absolute;
+    width: 120px;
+    border-left: 1px solid #000;
+    border-bottom: 1px solid #000;
+    top: 0;
+    right: 0;
+}
+
+h2 {
+    text-align: center;
+    font-family: 'Gotu', sans-serif;
+    font-size: 1.25em;
+}
+
+#id-1 {
+    background-color: #D59898;
+} 
+  
+#id-2{
+    background-color: #C14543;
+  }
+  
+#id-3{
+    background-color: #E5D198;
+}
+
+section p{
+    font-family: 'Baloo Paaji 2', cursive;
+    margin-top: 30px;
+    text-align: justify;
+    font-size:100%;
+}
+  
+/********** browser **********/
+@media (min-width: 992px) {
+    .col-lg-4 {
+        float: left; 
+        width: 33.33%;
+    }
+}
+  
+/********** tablet **********/
+@media (min-width: 768px) and (max-width: 991px) {
+    .col-lg-4 {
+        width: 50%;
+        float: left;
+    }
+    .col-lg-tablet{
+        width: 100%;
+        float: left;
+    }
+}
+
+/********** mobile **********/
+@media (max-width: 767px) {
+    .col-lg-4{
+        width: 100%;
+        float: left;
+    }
+}
