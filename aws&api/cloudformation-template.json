@@ -1,6 +1,6 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "cloud formation template for cloud computing hw4-email-spam",
+    "Description": "aws cloudformation template for cloud computing hw4 Intelligent System on Cloud",
     "Resources": {
         "MyS3": {
             "Type": "AWS::S3::Bucket",
