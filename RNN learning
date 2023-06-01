@@ -1,1 +1,121 @@
 
+ChatGPT学习
+概述和应用
+NLP应用
+ 	机器翻译：计算机具备将 种语言翻译成另一种语言的能力
+ 	情感分析：计算能够判断用户评论是否积极
+ 	智能问答：计算机能够正确回答输入的问题
+ 	文摘生成：计算机能够准确归纳、总结并产生文本摘要
+ 	文本分类：计算机能够采集各种文章， 进行主题分析，从而进行自动分类
+ 	舆论分析：计算机能够判断目前舆论的导向
+ 	知识图谱：知识点相互连接而成的语义网络
+高效好用工具
+ 
+Neural Networks & Deep Learning
+注：后面两章内容引自Andrew Ng的https://www.coursera.org/specializations/deep-learning
+NN分类&应用
+ 
+ 	Standard NN: 广告投放、房价预测
+ 	CNN: 图像识别
+ 	RNN: 机器翻译、语音识别
+ 	Custom/Hybrid NN: 自动驾驶
+
+Supervised Learning-Structured/Unstructured Data
+     
+思考：How to represent unstructured data?
+Data-Computation-Algorithms
+ 
+Logistic Regression 
+ 
+Recurrent Neural Networks
+Word representation
+将词语转化为可以由机器学习模型理解的向量
+	One-Hot Encoding
+最基础的词向量表示方法，每个词语都被转化为一个长度为词汇表大小的向量。
+ 
+
+	Word Embeddings
+一种将词语映射到高维空间的技术，使得语义上相似的词语在这个空间中的距离相近，从而有效地捕捉词语的语义和语境信息。
+ 
+
+	比较
+ 	维度：One-Hot Encoding的维度等于词汇表的大小。例如，如果词汇表有10000个单词，那么每个单词的One-Hot编码就是一个包含10000个元素的向量，其中有一个元素为1，其余的都为0。因此，对于大型语料库，One-Hot编码会导致非常大的向量。相比之下，Word Embeddings通常具有较低的维度，例如50、100、200或300等。
+ 	语义信息：One-Hot Encoding不包含任何关于单词的语义信息。每个向量都是正交的，这意味着所有的单词都是彼此独立的，没有任何语义关联。但是，Word Embeddings则能捕捉到词语之间的语义关系。在词嵌入空间中，语义上相似的词会聚集在一起。
+ 	存储和计算效率：由于One-Hot Encoding产生的向量维度通常非常高，并且是稀疏的，所以在存储和计算上效率较低。另一方面，Word Embeddings是稠密的，并且具有较低的维度，因此在存储和计算上更有效。
+ 	训练：One-Hot向量是手动创建的，不需要训练。而Word Embeddings需要训练，可以使用诸如Word2Vec、GloVe或FastText等模型进行训练，也可以直接在训练神经网络的过程中学习。
+
+注：词汇表里也会有一些特殊字符， 例如 "<UNK>" (未知) 和 "<EOS>" (结束符) 或 "<PAD>" (填充)等
+
+	可视化与类比
+ 
+这里，sim 指cosine similarity。在上图可以看到不同词的关系。
+
+	消除偏见
+由于Word Embeddings是从训练文本中学习的，因此它们会反映出这些文本中的各种偏见，包括性别、种族、年龄、性取向等（比如程序员-man，护士-woman）。这意味着，如果训练文本中存在这些偏见，那么训练出来的Word Embeddings也可能包含这些偏见。
+可以通过以下方式进行消除：
+ 
+论文指引：https://arxiv.org/abs/1607.06520 
+VS传统神经网络
+思考：自然语言处理为什么不使用传统的神经网络？
+ 
+A Standard Network
+ 	输入输出的长度不固定：在NLP任务中，输入（如句子或段落）和输出（如句子的翻译或情感标签）的长度可能不固定，而标准的神经网络需要固定大小的输入和输出。
+ 	缺乏顺序和上下文信息的处理：标准的神经网络无法处理顺序数据，也就是说，它无法捕捉句子中单词的顺序信息，而这在NLP任务中非常重要。例如，"狗追猫"和"猫追狗"含义截然不同，尽管它们的词语相同，但顺序不同。
+ 	长距离依赖问题：在语言中，有时候一个词的含义会受到距离较远的另一个词的影响，而标准的神经网络很难捕捉这种长距离的依赖关系。
+RNN建模与计算
+典型结构如下，X<t>表示序列对应位置的输入，Tx表示输入序列的长度，Y^<t>表示序列相应位置的输出，Ty表示输出序列长度。A<t>被称为记忆单元（memory cell），会传入到第t+1个元素中，作为输入，初始的a<0>一般为零向量。注意，这里Tx=Ty，其他序列存在不等情况。
+ 
+
+ 
+ 
+向前传播的神经元内部结构与计算公式如下，
+  
+公式中：
+ 
+
+上面介绍的RNN为单向RNN，Forward Propagation中当只依赖前文，但实际语境中，是需要上下文共同来推断的。
+下面我们介绍backpropagation，定义损失函数(以二分类为例)和整个序列的成本函数，这里的Backpropagation through time从右往左的计算过程就像是沿着时间倒退。
+ 
+ 
+反向传播的神经元内部结构与计算公式如下，
+ 
+ 
+其他不同的结构
+ 
+使用RNN建立语言模型
+
+
+ 
+大模型LLM概述
+分类
+ 
+训练流程
+ 
+
+参考资料
+https://blog.replit.com/llm-training
+Plugins
+ 
+Prompt Engineering
+Guideline
+ 
+Write clear and specific instructions
+1、use delimiters to clearly indicate distinct parts of the input
+2、ask for structured output, such as HTML, JSON
+3、check  whether conditions are satisfied. Check assumptions required to do the task
+4、few-shot prompting. Give successful examples of completing tasks. Then ask model to perform the task
+
+Give the model time to think
+1、specify the steps to complete a task. Step 1. … Step N…
+2、instruct the model to work out its own solution before rushing to a conclusion.
+
+相关课程
+https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/
+Model limitations
+Hallucination. Makes statements that sound plausible but are not true.
+How to reduce: First find relevant information, then answer the question based on the relevant information.
+实践案例
+案例一
+
+案例二
+
